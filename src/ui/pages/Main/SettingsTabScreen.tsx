@@ -189,27 +189,27 @@ export default function SettingsTabScreen() {
               icon="discord"
               size={fontSizes.iconMiddle}
               color="textDim"
-              onClick={() => {
-                window.open(DISCORD_URL);
-              }}
+              // onClick={() => {
+              //   window.open(DISCORD_URL);
+              // }}
             />
 
             <Icon
               icon="twitter"
               size={fontSizes.iconMiddle}
               color="textDim"
-              onClick={() => {
-                window.open(TWITTER_URL);
-              }}
+              // onClick={() => {
+              //   window.open(TWITTER_URL);
+              // }}
             />
 
             <Icon
               icon="github"
               size={fontSizes.iconMiddle}
               color="textDim"
-              onClick={() => {
-                window.open(GITHUB_URL);
-              }}
+              // onClick={() => {
+              //   window.open(GITHUB_URL);
+              // }}
             />
           </Row>
           <Text text={`Version: ${versionInfo.currentVesion}`} preset="sub" textCenter />
