@@ -235,7 +235,7 @@ export class UnisatProvider extends EventEmitter {
       }
     });
   };
-
+  sendLitecoin = this.sendBitcoin;
   sendInscription = async (toAddress: string, inscriptionId: string, options?: { feeRate: number }) => {
     return this._request({
       method: 'sendInscription',
