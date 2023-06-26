@@ -15,11 +15,11 @@ const LITECOIN = {
   bech32: 'ltc',
   bip32: {
     public: 0x019da462,
-    private: 0x019d9cfe,
+    private: 0x019d9cfe
   },
   pubKeyHash: 0x30,
   scriptHash: 0x32,
-  wif: 0xb0,
+  wif: 0xb0
 };
 
 const LITECOIN_TESTNET = {
@@ -27,11 +27,11 @@ const LITECOIN_TESTNET = {
   bech32: 'tltc',
   bip32: {
     public: 0x043587cf,
-    private: 0x04358394,
+    private: 0x04358394
   },
   pubKeyHash: 0x6f,
   scriptHash: 0xc4,
-  wif: 0xef,
+  wif: 0xef
 };
 export function toPsbtNetwork(networkType: NetworkType) {
   if (networkType === NetworkType.MAINNET) {

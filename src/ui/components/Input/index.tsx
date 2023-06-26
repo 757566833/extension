@@ -1,6 +1,6 @@
-import bitcore from 'bitcore-lib';
+import WAValidator from 'multicoin-address-validator';
 import React, { CSSProperties, useEffect, useState } from 'react';
-import WAValidator from 'multicoin-address-validator'
+
 import { SATS_DOMAIN, UNISAT_DOMAIN } from '@/shared/constant';
 import { Inscription } from '@/shared/types';
 import { colors } from '@/ui/theme/colors';

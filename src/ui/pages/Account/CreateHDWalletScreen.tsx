@@ -60,7 +60,7 @@ function Step1_Create({
   const tools = useTools();
 
   const init = async () => {
-    const _mnemonics = (await wallet.generatePreMnemonic(contextData.entropy));
+    const _mnemonics = await wallet.generatePreMnemonic(contextData.entropy);
     updateContextData({
       mnemonics: _mnemonics
     });
@@ -207,7 +207,11 @@ function Step1_Import({
   return (
     <Column gap="lg">
       <Text text="Secret Recovery Phrase" preset="title-bold" textCenter />
-      <Text text={`Import an existing wallet with your ${contextData.words} word secret recovery phrase`} preset="sub" textCenter />
+      <Text
+        text={`Import an existing wallet with your ${contextData.words} word secret recovery phrase`}
+        preset="sub"
+        textCenter
+      />
       <Row justifyCenter>
         <Grid columns={2}>
           {keys.map((_, index) => {
@@ -547,7 +551,11 @@ export default function CreateHDWalletScreen() {
   const navigate = useNavigate();
 
   const { state } = useLocation();
-  const { isImport, fromUnlock, words = 12 } = state as {
+  const {
+    isImport,
+    fromUnlock,
+    words = 12
+  } = state as {
     isImport: boolean;
     fromUnlock: boolean;
     words: number;
@@ -555,7 +563,7 @@ export default function CreateHDWalletScreen() {
 
   const [contextData, setContextData] = useState<ContextData>({
     mnemonics: '',
-    entropy: words / 3 * 32,
+    entropy: (words / 3) * 32,
     words: words,
     hdPath: '',
     passphrase: '',

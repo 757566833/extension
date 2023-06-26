@@ -9,7 +9,6 @@ import eventBus from '@/shared/eventBus';
 import { Message } from '@/shared/utils';
 import AccountUpdater from '@/ui/state/accounts/updater';
 import '@/ui/styles/global.less';
-import * as Sentry from '@sentry/react';
 
 import { ActionComponentProvider } from './components/ActionComponent';
 import { AppDimensions } from './components/Responsive';

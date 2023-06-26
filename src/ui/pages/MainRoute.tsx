@@ -16,6 +16,7 @@ import CreateAccountScreen from './Account/CreateAccountScreen';
 import CreateHDWalletScreen from './Account/CreateHDWalletScreen';
 import CreatePasswordScreen from './Account/CreatePasswordScreen';
 import CreateSimpleWalletScreen from './Account/CreateSimpleWalletScreen';
+import SelectPhraseLengthScreen from './Account/SelectPhraseLengthScreen';
 import SwitchAccountScreen from './Account/SwitchAccountScreen';
 import SwitchKeyringScreen from './Account/SwitchKeyringScreen';
 import UnlockScreen from './Account/UnlockScreen';
@@ -50,7 +51,6 @@ import TxCreateScreen from './Wallet/TxCreateScreen';
 import TxFailScreen from './Wallet/TxFailScreen';
 import TxSuccessScreen from './Wallet/TxSuccessScreen';
 import './index.module.less';
-import SelectPhraseLengthScreen from './Account/SelectPhraseLengthScreen';
 
 const routes = {
   BoostScreen: {
