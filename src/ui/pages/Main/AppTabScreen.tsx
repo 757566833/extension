@@ -11,7 +11,8 @@ function AppItem({ info }: { info: AppInfo }) {
       preset="style1"
       onClick={() => {
         if (info.url) window.open(info.url);
-      }}>
+      }}
+    >
       <Row full>
         <Column justifyCenter>
           <Image src={info.logo} size={fontSizes.logo} />

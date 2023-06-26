@@ -63,7 +63,8 @@ export function MyItem({ account, autoNav }: MyItemProps, ref) {
               dispatch(accountActions.setCurrent(account));
             }
             if (autoNav) navigate('MainScreen');
-          }}>
+          }}
+        >
           <Text text={account.alianName} />
           <Text text={`${shortAddress(account.address)} (${path})`} preset="sub" />
         </Column>
@@ -84,13 +85,15 @@ export function MyItem({ account, autoNav }: MyItemProps, ref) {
             }}
             onMouseDown={(e) => {
               setOptionsVisible(false);
-            }}></div>
+            }}
+          ></div>
         )}
 
         <Icon
           onClick={async (e) => {
             setOptionsVisible(!optionsVisible);
-          }}>
+          }}
+        >
           <EllipsisOutlined />
         </Icon>
 
@@ -103,11 +106,13 @@ export function MyItem({ account, autoNav }: MyItemProps, ref) {
               right: 0,
               padding: 5,
               zIndex: 10
-            }}>
+            }}
+          >
             <Row
               onClick={() => {
                 navigate('EditAccountNameScreen', { account });
-              }}>
+              }}
+            >
               <EditOutlined />
               <Text text="Edit Name" size="sm" />
             </Row>
@@ -116,14 +121,16 @@ export function MyItem({ account, autoNav }: MyItemProps, ref) {
                 copyToClipboard(account.address);
                 tools.toastSuccess('copied');
                 setOptionsVisible(false);
-              }}>
+              }}
+            >
               <CopyOutlined />
               <Text text="Copy address" size="sm" />
             </Row>
             <Row
               onClick={() => {
                 navigate('ExportPrivateKeyScreen', { account });
-              }}>
+              }}
+            >
               <KeyOutlined />
               <Text text="Export Private Key" size="sm" />
             </Row>
@@ -159,7 +166,8 @@ export default function SwitchAccountScreen() {
           <Icon
             onClick={() => {
               navigate('CreateAccountScreen');
-            }}>
+            }}
+          >
             <PlusCircleOutlined />
           </Icon>
         }

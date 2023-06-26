@@ -168,7 +168,8 @@ export default function SettingsTabScreen() {
                       return;
                     }
                     navigate(item.route);
-                  }}>
+                  }}
+                >
                   <Row full justifyBetween>
                     <Column justifyCenter>
                       <Text text={item.label || item.desc} preset="regular-bold" />

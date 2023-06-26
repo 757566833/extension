@@ -64,7 +64,8 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
             dispatch(accountActions.setCurrent(keyring.accounts[0]));
           }
           if (autoNav) navigate('MainScreen');
-        }}>
+        }}
+      >
         <Column style={{ width: 20 }} selfItemsCenter>
           {selected && (
             <Icon>
@@ -95,13 +96,15 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
             }}
             onMouseDown={(e) => {
               setOptionsVisible(false);
-            }}></div>
+            }}
+          ></div>
         )}
 
         <Icon
           onClick={async (e) => {
             setOptionsVisible(!optionsVisible);
-          }}>
+          }}
+        >
           <SettingOutlined />
         </Icon>
 
@@ -114,12 +117,14 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
               right: 0,
               padding: 5,
               zIndex: 10
-            }}>
+            }}
+          >
             <Column>
               <Row
                 onClick={() => {
                   navigate('EditWalletNameScreen', { keyring });
-                }}>
+                }}
+              >
                 <EditOutlined />
                 <Text text="Edit Name" size="sm" />
               </Row>
@@ -128,7 +133,8 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
                 <Row
                   onClick={() => {
                     navigate('ExportMnemonicsScreen', { keyring });
-                  }}>
+                  }}
+                >
                   <KeyOutlined />
                   <Text text="Show Secret Recovery Phrase" size="sm" />
                 </Row>
@@ -136,7 +142,8 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
                 <Row
                   onClick={() => {
                     navigate('ExportPrivateKeyScreen', { account: keyring.accounts[0] });
-                  }}>
+                  }}
+                >
                   <KeyOutlined />
                   <Text text="Export Private Key" size="sm" />
                 </Row>
@@ -149,7 +156,8 @@ export function MyItem({ keyring, autoNav }: MyItemProps, ref) {
                   }
                   setRemoveVisible(true);
                   setOptionsVisible(false);
-                }}>
+                }}
+              >
                 <Icon color="danger">
                   <DeleteOutlined />
                 </Icon>
@@ -202,7 +210,8 @@ export default function SwitchKeyringScreen() {
           <Icon
             onClick={() => {
               navigate('AddKeyringScreen');
-            }}>
+            }}
+          >
             <PlusCircleOutlined />
           </Icon>
         }

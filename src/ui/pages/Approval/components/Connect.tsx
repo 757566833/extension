@@ -32,7 +32,8 @@ export function MyItem({ account }: MyItemProps, ref) {
           await wallet.changeAccount(account);
           dispatch(accountActions.setCurrent(account));
         }
-      }}>
+      }}
+    >
       <Row>
         <Column style={{ width: 20 }} selfItemsCenter>
           {selected && (
