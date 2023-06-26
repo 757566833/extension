@@ -50,6 +50,7 @@ import TxCreateScreen from './Wallet/TxCreateScreen';
 import TxFailScreen from './Wallet/TxFailScreen';
 import TxSuccessScreen from './Wallet/TxSuccessScreen';
 import './index.module.less';
+import SelectPhraseLengthScreen from './Account/SelectPhraseLengthScreen';
 
 const routes = {
   BoostScreen: {
@@ -91,6 +92,10 @@ const routes = {
   UnlockScreen: {
     path: '/account/unlock',
     element: <UnlockScreen />
+  },
+  SelectPhraseLengthScreen: {
+    path: '/account/select-phrase-length',
+    element: <SelectPhraseLengthScreen />
   },
   SwitchAccountScreen: {
     path: '/account/switch-account',
