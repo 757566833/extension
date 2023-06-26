@@ -84,7 +84,7 @@ export interface WalletController {
   }>;
   createKeyringWithPrivateKey(data: string, addressType: AddressType, alianName?: string): Promise<Account[]>;
   getPreMnemonics(): Promise<any>;
-  generatePreMnemonic(): Promise<string>;
+  generatePreMnemonic(data: number): Promise<string>;
   removePreMnemonics(): void;
   createKeyringWithMnemonics(
     mnemonic: string,
