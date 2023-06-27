@@ -97,9 +97,11 @@ export default function DiscoverTabScreen() {
 
         <Row gutter={[16,16]}>
           {img.map((item, index) => (<Col {...imageSpan} key={`${item}${index}`}>
-            <Preview {...item}  onClick={() => {
-              navigate('OrdinalsDetailScreen', { inscription: item.inscribeNum });
-            }}/>
+            <Preview {...item}
+              // onClick={() => {
+              //   navigate('OrdinalsDetailScreen', { inscription: item.inscribeNum });
+              // }}
+            />
           </Col>
           ))}
         </Row>
@@ -114,9 +116,11 @@ export default function DiscoverTabScreen() {
         <Text text="TEXT" preset="regular-bold" mt="lg" />
         <Row gutter={[16,16]}>
           {text.map((item, index) => (<Col {...textSpan} key={`${item}${index}`}>
-            <Preview {...item}  onClick={() => {
-              navigate('OrdinalsDetailScreen', { inscription: item.inscribeNum });
-            }}/>
+            <Preview {...item}
+              // onClick={() => {
+              //   navigate('OrdinalsDetailScreen', { inscription: item.inscribeNum });
+              // }}
+            />
           </Col>
           ))}
         </Row>
