@@ -5,6 +5,7 @@ import {openapiService} from '@/background/service';
 import {IHistoryItem} from '@/shared/types';
 import {htmlTransform} from '@/ui/utils';
 import {Skeleton, Typography,Card} from 'antd';
+import {colors} from '@/ui/theme/colors';
 
 // export  const ImageCard = styled(Card)(()=>({
 //   ':hover':{
@@ -13,7 +14,7 @@ import {Skeleton, Typography,Card} from 'antd';
 // }))
 const Text: React.FC<{ value?: string }> = (props) => {
   const { value } = props;
-  return <Card hoverable={true} bodyStyle={{padding:0,width:'100%',paddingBottom:'100%',position:'relative'}}>
+  return <Card hoverable={true} bodyStyle={{padding:0,width:'100%',paddingBottom:'100%',position:'relative',backgroundColor:colors.black_dark}}>
     <Typography style={{position:'absolute',left:12,right:12,top:12,bottom:12}}>
       <Typography.Paragraph>
         {value}
