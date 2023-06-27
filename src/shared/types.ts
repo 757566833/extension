@@ -230,3 +230,66 @@ export interface WalletConfig {
   moonPayEnabled: boolean;
   statusMessage: string;
 }
+
+// sat server
+
+export interface IConfig {
+  'serviceFee'?: number,
+  'feeRate'?: number,
+  'inscribeType'?: Record<number, string>,
+  'orderStatus'?: Record<number, string>,
+  // "application/json",
+  // "application/pdf",
+  // "audio/mpeg",
+  // "dadabots/was+here",
+  // "image/gif",
+  // "image/jpeg",
+  // "image/png",
+  // "image/svg+xml",
+  // "image/webp",
+  // "model/gltf-binary",
+  // "text/html;charset=utf-8",
+  // "text/plain;charset=utf-8",
+  // "video/mp4"
+  'contentTypes'?: string[]
+  'stableStatus'?: number[]
+}
+export interface IHistoryItem {
+  'id'?: string,
+  'inscribeId'?: string,
+  'inscribeNum'?: string,
+  'address'?: string,
+  'outputValue'?: string,
+  'genesisHeight'?: string,
+  'genesisFee'?: string,
+  'genesisTransaction'?: string,
+  'location'?: string,
+  'output'?: string,
+  'offset'?: string,
+  'contentLength'?: string,
+  'contentType'?: string,
+  'inscribeType'?: number,
+  from?:string,
+  'p'?: string,
+  'op'?: string,
+  'tick'?: string,
+  'max'?: string,
+  'lim'?: string,
+  'amt'?: string,
+  'parseVersion'?: string,
+  'initTime'?: number,
+  'valid'?: boolean,
+  'overallBalance'?: string,
+  'transferableBalance'?: string,
+  'availableBalance'?: string,
+  'preview'?: string,
+  'createTime'?: string,
+  'updateTime'?: string
+}
+export interface IHistoryResponse {
+  'start'?: string,
+  'limit'?: string,
+  'total'?: number,
+  'data'?: IHistoryItem[],
+  'addresses'?: string[]
+}

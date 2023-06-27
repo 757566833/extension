@@ -231,6 +231,7 @@ export const OPENAPI_URL_MAINNET = 'https://litescribe.io/api';
 // export const OPENAPI_URL_MAINNET = 'https://unisat.io/wallet-api-v4';
 export const OPENAPI_URL_TESTNET = 'https://testnet.litescribe.io/api';
 
+
 export const EVENTS = {
   broadcastToUI: 'broadcastToUI',
   broadcastToBackground: 'broadcastToBackground',
@@ -274,3 +275,65 @@ export const TWITTER_URL = 'https://twitter.com/litescribe_io';
 export const CHANNEL = process.env.channel!;
 export const VERSION = process.env.release!;
 export const MANIFEST_VERSION = process.env.manifest!;
+
+
+// sat server
+export const SAT_API_URL = 'http://192.168.246.62:8001';
+
+export  const SAT_IMAGE_CONTENT_PREFIX = 'image'
+export  const SAT_TEXT_CONTENT_PREFIX = 'text'
+
+export enum Media {
+  Text,
+  Pdf,
+  Audio,
+  Image,
+  Iframe,
+  Unknown,
+  Video,
+}
+export const ContentType =  {
+  ApplicationJson:"application/json",
+  ApplicationPdf:"application/pdf",
+  ApplicationPgpSignature:"application/pgp-signature",
+  ApplicationYaml:"application/yaml",
+  AudioFlac:"audio/flac",
+  AudioMpeg:"audio/mpeg",
+  AudioWav:"audio/wav",
+  ImageApng:"image/apng",
+  ImageAvif:"image/avif",
+  ImageGif:"image/gif",
+  ImageJpeg:"image/jpeg",
+  ImagePng:"image/png",
+  ImageSvgXml:"image/svg+xml",
+  ImageWebp:"image/webp",
+  ModelGltfBinary:"model/gltf-binary",
+  ModelStl:"model/stl",
+  TextHtmlCharsetUtf8:"text/html;charset=utf-8",
+  TextPlainCharsetUtf8:"text/plain;charset=utf-8",
+  VideoMp4:"video/mp4",
+  VideoWebm:"video/webm",
+
+}
+export const PREVIEW_TYPE:Record<string,Media> = {
+  [ContentType.ApplicationJson]:Media.Text,
+  [ContentType.ApplicationPdf]: Media.Pdf,
+  [ContentType.ApplicationPgpSignature]: Media.Text,
+  [ContentType.ApplicationYaml]: Media.Text,
+  [ContentType.AudioFlac]: Media.Audio,
+  [ContentType.AudioMpeg]: Media.Audio,
+  [ContentType.AudioWav]: Media.Audio,
+  [ContentType.ImageApng]: Media.Image,
+  [ContentType.ImageAvif]: Media.Image,
+  [ContentType.ImageGif]: Media.Image,
+  [ContentType.ImageJpeg]: Media.Image,
+  [ContentType.ImagePng]: Media.Image,
+  [ContentType.ImageSvgXml]: Media.Iframe,
+  [ContentType.ImageWebp]: Media.Image,
+  [ContentType.ModelGltfBinary]: Media.Unknown,
+  [ContentType.ModelStl]: Media.Unknown,
+  [ContentType.TextHtmlCharsetUtf8]: Media.Iframe,
+  [ContentType.TextPlainCharsetUtf8]: Media.Text,
+  [ContentType.VideoMp4]: Media.Video,
+  [ContentType.VideoWebm]: Media.Video,
+}

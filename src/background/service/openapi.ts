@@ -1,7 +1,6 @@
 import randomstring from 'randomstring';
-
 import { createPersistStore } from '@/background/utils';
-import { CHANNEL, OPENAPI_URL_MAINNET, OPENAPI_URL_TESTNET, VERSION } from '@/shared/constant';
+import {CHANNEL, OPENAPI_URL_MAINNET, OPENAPI_URL_TESTNET, SAT_API_URL, VERSION} from '@/shared/constant';
 import {
   AddressAssets,
   AppSummary,
@@ -16,7 +15,9 @@ import {
   TokenTransfer,
   AddressTokenSummary,
   DecodedPsbt,
-  WalletConfig
+  WalletConfig,
+  IConfig,
+  IHistoryResponse
 } from '@/shared/types';
 
 interface OpenApiStore {
@@ -121,6 +122,64 @@ export class OpenApiService {
     const data = await res.json();
     return data;
   };
+  // use in sat server
+  post = async <T>(url?: string, params?: Record<string, any>, header?: HeadersInit) => {
+    const res = await fetch(new Request(`${SAT_API_URL}${url}`), {
+      method: 'POST',
+      body: JSON.stringify(params),
+      headers: {
+        ...header,
+      },
+    })
+    if (res.status >= 300) {
+      try {
+        const error = await res.json() as { message:string,reason:number }
+        if(error.reason ==90006){
+          // todo
+          throw new Error(error.message);
+          return ;
+        }
+        // message.error(`reason:${error.reason};message:${error.message}`)
+        throw new Error(`reason:${error.reason};message:${error.message}`);
+        // enqueueSnackbar(`reason:${error.reason};message:${error.message}`,{variant:'error'})
+      }catch (e) {
+        throw new Error('http error');
+        // message.error('http error')
+      }
+
+      return
+    }
+    // console.log(await res.json())
+    return await res.json() as T
+  };
+  get = async(url?: string, params?: Record<string, any>, header?: HeadersInit) => {
+
+    if(url){
+      const _url = url.startsWith('http')?url:`${SAT_API_URL}${url}`
+      const res = await fetch(_url, {
+        method: 'GET',
+        headers: {
+          ...header,
+        },
+      })
+      if (res.status >= 300) {
+        try {
+          const error = await res.json() as { message:string,reason:number }
+          // enqueueSnackbar(`reason:${error.reason};message:${error.message}`,{variant:'error'})
+          throw new Error(`reason:${error.reason};message:${error.message}`);
+        }catch (e) {
+          // enqueueSnackbar('http error',{variant:'error'})
+          throw new Error('http error');
+        }
+
+
+        return
+      }
+      // console.log(await res.json())
+      return await res.text() as string
+    }
+
+  }
 
   async getWalletConfig(): Promise<WalletConfig> {
     const data = await this.httpGet('/default/config', {});
@@ -316,6 +375,17 @@ export class OpenApiService {
       throw new Error(data.message);
     }
     return data.result;
+  }
+
+  async getSatConfig(): Promise<IConfig|undefined> {
+    return  await this.post('/v1/config', {});
+  }
+  async getSatData(contentTypes:string[],start = 0,limit=10): Promise<IHistoryResponse|undefined> {
+    return  await this.post('/v1/history', {
+      contentTypes,
+      start,
+      limit
+    });
   }
 }
 

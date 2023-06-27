@@ -164,3 +164,33 @@ export function useLocationState<T>() {
   const { state } = useLocation();
   return state as T;
 }
+
+
+export const htmlTransform = (htmlStr?:string)=> {
+  if(htmlStr&&DOMParser){
+    const doc = new DOMParser().parseFromString(htmlStr, 'text/html');
+
+    const ast = doc.documentElement;
+
+    return ast
+  }
+
+  return undefined;
+}
+
+
+export const getWindowSize = () => {
+  const windowWidth = window?.innerWidth || document?.documentElement?.clientWidth || document?.body?.clientWidth;
+
+  if (windowWidth < 576) {
+    return 'xs';
+  } else if (windowWidth < 768) {
+    return 'sm';
+  } else if (windowWidth < 992) {
+    return 'md';
+  } else if (windowWidth < 1200) {
+    return 'lg';
+  } else {
+    return 'xl';
+  }
+};

@@ -15,6 +15,7 @@ import { AppDimensions } from './components/Responsive';
 import AsyncMainRoute from './pages/MainRoute';
 import store from './state';
 import { WalletProvider } from './utils';
+import ConfigUpdater from '@/ui/state/config/updater';
 
 // Sentry.init({
 //   dsn: 'https://15ca58bf532f4234a2f400cd11edfa2f@o4504750033403904.ingest.sentry.io/4505044300201984',
@@ -125,6 +126,7 @@ eventBus.addEventListener(EVENTS.broadcastToBackground, (data) => {
 function Updaters() {
   return (
     <>
+      <ConfigUpdater/>
       <AccountUpdater />
     </>
   );
