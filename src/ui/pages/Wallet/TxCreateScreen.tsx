@@ -71,7 +71,7 @@ export default function TxCreateScreen() {
       return;
     }
     if (toSatoshis < COIN_DUST) {
-      setError(`Amount must be at least ${dustAmount} BTC`);
+      setError(`Amount must be at least ${dustAmount} LTC`);
       return;
     }
 
@@ -121,7 +121,7 @@ export default function TxCreateScreen() {
         onBack={() => {
           window.history.go(-1);
         }}
-        title="Send BTC"
+        title="Send LTC"
       />
       <Content>
         <Row justifyCenter>
@@ -144,7 +144,7 @@ export default function TxCreateScreen() {
           <Row justifyBetween>
             <Text text="Balance" color="textDim" />
             {showSafeBalance ? (
-              <Text text={`${accountBalance.amount} BTC`} preset="bold" size="sm" />
+              <Text text={`${accountBalance.amount} LTC`} preset="bold" size="sm" />
             ) : (
               <Row
                 onClick={() => {
@@ -157,7 +157,7 @@ export default function TxCreateScreen() {
                   preset="sub"
                   style={{ color: autoAdjust ? colors.yellow_light : colors.white_muted }}
                 />
-                <Text text={`${accountBalance.amount} BTC`} preset="bold" size="sm" />
+                <Text text={`${accountBalance.amount} LTC`} preset="bold" size="sm" />
               </Row>
             )}
           </Row>
@@ -172,7 +172,7 @@ export default function TxCreateScreen() {
                 }}
               >
                 <Text text={'MAX'} color={autoAdjust ? 'yellow' : 'textDim'} size="sm" />
-                <Text text={`${safeBalance} BTC`} preset="bold" size="sm" />
+                <Text text={`${safeBalance} LTC`} preset="bold" size="sm" />
               </Row>
             </Row>
           )}

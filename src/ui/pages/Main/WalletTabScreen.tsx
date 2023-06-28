@@ -82,7 +82,7 @@ export default function WalletTabScreen() {
     },
     {
       key: WalletTabScreenTabKey.BRC20,
-      label: 'BRC-20',
+      label: 'LTC-20',
       children: <BRC20List />
     }
   ];
@@ -122,7 +122,7 @@ export default function WalletTabScreen() {
         <Column gap="xl">
           {currentKeyring.type === KEYRING_TYPE.HdKeyring && <AccountSelect />}
 
-          {isTestNetwork && <Text text="Bitcoin Testnet is used for testing." color="danger" textCenter />}
+          {isTestNetwork && <Text text="Litcoin Testnet is used for testing." color="danger" textCenter />}
 
           {walletConfig.statusMessage && <Text text={walletConfig.statusMessage} color="danger" textCenter />}
 
@@ -130,12 +130,12 @@ export default function WalletTabScreen() {
             title={
               <span>
                 <Row justifyBetween>
-                  <span>{'BTC Balance'}</span>
-                  <span>{` ${accountBalance.btc_amount} BTC`}</span>
+                  <span>{'LTC Balance'}</span>
+                  <span>{` ${accountBalance.btc_amount} LTC`}</span>
                 </Row>
                 <Row justifyBetween>
                   <span>{'Inscription Balance'}</span>
-                  <span>{` ${accountBalance.inscription_amount} BTC`}</span>
+                  <span>{` ${accountBalance.inscription_amount} LTC`}</span>
                 </Row>
               </span>
             }
@@ -144,7 +144,7 @@ export default function WalletTabScreen() {
             }}
           >
             <div>
-              <Text text={balanceValue + '  BTC'} preset="title-bold" textCenter size="xxxl" />
+              <Text text={balanceValue + '  LTC'} preset="title-bold" textCenter size="xxxl" />
             </div>
           </Tooltip>
 

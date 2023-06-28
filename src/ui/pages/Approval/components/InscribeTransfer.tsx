@@ -373,7 +373,7 @@ function InscribeConfirmStep({ contextData, updateContextData }: StepProps) {
                 <Text text="Preview" preset="sub-bold" />
                 <Card preset="style2">
                   <Text
-                    text={`{"p":"brc-20","op":"transfer","tick":"${tokenBalance.ticker}","amt":"${amount}"}`}
+                    text={`{"p":"ltc-20","op":"transfer","tick":"${tokenBalance.ticker}","amt":"${amount}"}`}
                     size="xs"
                   />
                 </Card>
@@ -383,17 +383,17 @@ function InscribeConfirmStep({ contextData, updateContextData }: StepProps) {
             <Column>
               <Row justifyBetween>
                 <Text text="Payment Network Fee" color="textDim" />
-                <Text text={`${networkFee} BTC`} />
+                <Text text={`${networkFee} LTC`} />
               </Row>
 
               <Row justifyBetween>
                 <Text text="Inscription Output Value" color="textDim" />
-                <Text text={`${outputValue} BTC`} />
+                <Text text={`${outputValue} LTC`} />
               </Row>
 
               <Row justifyBetween>
                 <Text text="Inscription Network Fee" color="textDim" />
-                <Text text={`${minerFee} BTC`} />
+                <Text text={`${minerFee} LTC`} />
               </Row>
 
               <Row justifyBetween>
@@ -401,19 +401,19 @@ function InscribeConfirmStep({ contextData, updateContextData }: StepProps) {
                 {originServiceFee != serviceFee ? (
                   <Column>
                     <Text
-                      text={`${originServiceFee} BTC`}
+                      text={`${originServiceFee} LTC`}
                       style={{ textDecorationLine: 'line-through' }}
                       color="textDim"
                     />
-                    <Text text={`${serviceFee} BTC`} />
+                    <Text text={`${serviceFee} LTC`} />
                   </Column>
                 ) : (
-                  <Text text={`${serviceFee} BTC`} />
+                  <Text text={`${serviceFee} LTC`} />
                 )}
               </Row>
               <Row justifyBetween>
                 <Text text="Total" color="gold" />
-                <Text text={`${totalFee} BTC`} color="gold" />
+                <Text text={`${totalFee} LTC`} color="gold" />
               </Row>
             </Column>
           </Column>
@@ -636,7 +636,7 @@ function InscribeResultStep({
 
             <Column mt="lg">
               <Text
-                text="The transferable and available balance of BRC20 will be refreshed in a few minutes."
+                text="The transferable and available balance of LTC20 will be refreshed in a few minutes."
                 textCenter
               />
             </Column>

@@ -106,14 +106,14 @@ export default function InscriptionPreview({ data, onClick, preset }: Inscriptio
           <Row style={{ flex: 1 }} />
           <Row fullX justifyEnd mb="sm">
             <Tooltip
-              title={`The UTXO containing this inscription has ${data.outputValue} sats`}
+              title={`The UTXO containing this inscription has ${data.outputValue} lits`}
               overlayStyle={{
                 fontSize: fontSizes.xs
               }}
             >
               <div>
                 <Text
-                  text={`${data.outputValue} sats`}
+                  text={`${data.outputValue} lits`}
                   size="xs"
                   style={{
                     backgroundColor: 'rgba(255,255,255,0.2)',

@@ -12,14 +12,14 @@ import { $, domReadyCall } from './utils';
 const log = (event, ...args) => {
   if (process.env.NODE_ENV !== 'production') {
     console.log(
-      `%c [unisat] (${new Date().toTimeString().slice(0, 8)}) ${event}`,
+      `%c [anysat] (${new Date().toTimeString().slice(0, 8)}) ${event}`,
       'font-weight: 600; background-color: #7d6ef9; color: white;',
       ...args
     );
   }
 };
 const script = document.currentScript;
-const channelName = script?.getAttribute('channel') || 'UNISAT';
+const channelName = script?.getAttribute('channel') || 'ANYSAT';
 
 export interface Interceptor {
   onRequest?: (data: any) => any;
@@ -312,23 +312,23 @@ export class UnisatProvider extends EventEmitter {
 
 declare global {
   interface Window {
-    unisat: UnisatProvider;
+    anysat: UnisatProvider;
   }
 }
 
 const provider = new UnisatProvider();
 
-if (!window.unisat) {
-  window.unisat = new Proxy(provider, {
+if (!window.anysat) {
+  window.anysat = new Proxy(provider, {
     deleteProperty: () => true
   });
 }
 
-Object.defineProperty(window, 'unisat', {
+Object.defineProperty(window, 'anysat', {
   value: new Proxy(provider, {
     deleteProperty: () => true
   }),
   writable: false
 });
 
-window.dispatchEvent(new Event('unisat#initialized'));
+window.dispatchEvent(new Event('anysat#initialized'));

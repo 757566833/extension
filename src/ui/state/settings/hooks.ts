@@ -67,18 +67,18 @@ export function useChangeNetworkTypeCallback() {
 export function useBlockstreamUrl() {
   const networkType = useNetworkType();
   if (networkType === NetworkType.MAINNET) {
-    return 'https://mempool.space';
+    return 'https://blockchair.com/litecoin';
   } else {
-    return 'https://mempool.space/testnet';
+    return 'https://blockexplorer.one/litecoin/testnet';
   }
 }
 
 export function useTxIdUrl(txid: string) {
   const networkType = useNetworkType();
   if (networkType === NetworkType.MAINNET) {
-    return `https://mempool.space/tx/${txid}`;
+    return `https://blockchair.com/litecoin/transaction/${txid}`;
   } else {
-    return `https://mempool.space/testnet/tx/${txid}`;
+    return `https://blockexplorer.one/litecoin/testnet/tx/${txid}`;
   }
 }
 
