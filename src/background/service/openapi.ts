@@ -124,7 +124,13 @@ export class OpenApiService {
   };
   // use in sat server
   post = async <T>(url?: string, params?: Record<string, any>, header?: HeadersInit) => {
-    const res = await fetch(new Request(`${SAT_API_URL}${url}`), {
+    let _url
+    if(url?.startsWith('http')){
+      _url = `${url}`
+    }else{
+      _url =`${SAT_API_URL}${url}`
+    }
+    const res = await fetch(new Request(_url), {
       method: 'POST',
       body: JSON.stringify(params),
       headers: {
@@ -383,6 +389,13 @@ export class OpenApiService {
   async getSatData(contentTypes:string[],start = 0,limit=10): Promise<IHistoryResponse|undefined> {
     return  await this.post('/v1/history', {
       contentTypes,
+      start,
+      limit
+    });
+  }
+  async getTickPageByAddress(address:string,start = 0,limit=9): Promise<IHistoryResponse|undefined> {
+    return  await this.post('/v1/history', {
+      address,
       start,
       limit
     });

@@ -1,13 +1,13 @@
-import { Tooltip } from 'antd';
+import { Tooltip} from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 
 import { KEYRING_TYPE } from '@/shared/constant';
-import { TokenBalance, NetworkType, Inscription } from '@/shared/types';
+import { NetworkType, Inscription, IHistoryItem} from '@/shared/types';
 import { Card, Column, Content, Footer, Header, Icon, Layout, Row, Text } from '@/ui/components';
+import {Row as AntdRow,Col as AntdCol} from 'antd'
 import AccountSelect from '@/ui/components/AccountSelect';
 import { useTools } from '@/ui/components/ActionComponent';
 import { AddressBar } from '@/ui/components/AddressBar';
-import BRC20BalanceCard from '@/ui/components/BRC20BalanceCard';
 import { Button } from '@/ui/components/Button';
 import { Empty } from '@/ui/components/Empty';
 import InscriptionPreview from '@/ui/components/InscriptionPreview';
@@ -33,7 +33,9 @@ import { useWallet } from '@/ui/utils';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import { useNavigate } from '../MainRoute';
-
+import {openapiService} from '@/background/service';
+import Preview from '@/ui/components/Preview';
+const textSpan = {xs: 12, sm: 8, md: 6, lg: 3, xl: 3}
 export default function WalletTabScreen() {
   const navigate = useNavigate();
 
@@ -300,21 +302,24 @@ function BRC20List() {
   const wallet = useWallet();
   const currentAccount = useCurrentAccount();
 
-  const [tokens, setTokens] = useState<TokenBalance[]>([]);
+  const [tokens, setTokens] = useState<IHistoryItem[]>([]);
   const [total, setTotal] = useState(-1);
-  const [pagination, setPagination] = useState({ currentPage: 1, pageSize: 100 });
+  const [pagination, setPagination] = useState({ currentPage: 0, pageSize: 18 });
 
   const tools = useTools();
   const fetchData = async () => {
     try {
       // tools.showLoading(true);
-      const { list, total } = await wallet.getBRC20List(
+      const res = await openapiService.getTickPageByAddress(
         currentAccount.address,
         pagination.currentPage,
         pagination.pageSize
       );
-      setTokens(list);
-      setTotal(total);
+      if(res){
+        setTokens(res.data||[]);
+        setTotal(res.total||0);
+      }
+
     } catch (e) {
       tools.toastError((e as Error).message);
     } finally {
@@ -343,18 +348,29 @@ function BRC20List() {
   }
 
   return (
-    <Column>
-      <Row style={{ flexWrap: 'wrap' }} gap="sm">
-        {tokens.map((data, index) => (
-          <BRC20BalanceCard
-            key={index}
-            tokenBalance={data}
-            onClick={() => {
-              navigate('BRC20TokenScreen', { tokenBalance: data, ticker: data.ticker });
-            }}
+    <>
+      <AntdRow gutter={[16,16]}>
+        {tokens.map((item, index) => (<AntdCol {...textSpan} key={`${item}${index}`}>
+          <Preview {...item}
+            // onClick={() => {
+            //   navigate('OrdinalsDetailScreen', { inscription: item.inscribeNum });
+            // }}
           />
+        </AntdCol>
         ))}
-      </Row>
+      </AntdRow>
+      {/*<Row style={{ flexWrap: 'wrap' }} gap="sm">*/}
+      {/* */}
+      {/*  {tokens.map((data, index) => (*/}
+      {/*    <BRC20BalanceCard*/}
+      {/*      key={index}*/}
+      {/*      tokenBalance={data}*/}
+      {/*      onClick={() => {*/}
+      {/*        navigate('BRC20TokenScreen', { tokenBalance: data, ticker: data.ticker });*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*  ))}*/}
+      {/*</Row>*/}
 
       <Row justifyCenter mt="lg">
         <Pagination
@@ -365,6 +381,6 @@ function BRC20List() {
           }}
         />
       </Row>
-    </Column>
+    </>
   );
 }
